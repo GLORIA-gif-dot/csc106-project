@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="projects.html">Projects</a>
+  <a href="planner.html">Planner</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<h1>Academic Planner</h1>
+
+<input id="taskInput" placeholder="Enter task">
+<button onclick="addTask()">Add Task</button>
+
+<ul id="taskList"></ul>
+
+<script>
+function addTask() {
+  const input = document.getElementById("taskInput");
+  const task = input.value.trim();
+
+  if (task === "") {
+    alert("Please enter a task");
+    return;
+  }
+
+  const li = document.createElement("li");
+  li.textContent = task;
+
+  // click to mark completed
+  li.onclick = function () {
+    li.style.textDecoration = "line-through";
+  };
+
+  // double click to delete
+  li.ondblclick = function () {
+    li.remove();
+  };
+
+  document.getElementById("taskList").appendChild(li);
+
+  input.value = "";
+}
+</script>
+
+</body>
+</html>
